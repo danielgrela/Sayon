@@ -1,11 +1,64 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { Image } from "astro:assets";
+import fondopc1 from "../assets/fondopc1.jpg";
+import fondopc2 from "../assets/fondopc2.jpg";
+import fondopc3 from "../assets/fondopc3.jpg";
+import fondopc4 from "../assets/fondopc4.png";
+import fondopc5 from "../assets/fondopc5.jpg";
+import fondopc6 from "../assets/fondopc6.jpg";
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<div 
+	class="absolute inset-0 w-full h-full pointer-events-none"
+	style="clip-path: polygon(40% 0, 100% 0, 100% 100%, 35% 100%);">
+	<div id="image-slider" class="relative w-full h-full">
+		<Image
+			priority
+			src={fondopc1} 
+			alt="Fondo decorativo 1"
+			class="slide absolute top-0 right-0 h-full w-[65%] object-cover object-right pointer-events-auto transition-opacity duration-1000 opacity-100 z-10"/>
+		<Image
+			src={fondopc2} 
+			alt="Fondo decorativo 2"
+			class="slide absolute top-0 right-0 h-full w-[65%] object-cover object-right pointer-events-auto transition-opacity duration-1000 opacity-0 z-0"/>
+		<Image
+			src={fondopc3} 
+			alt="Fondo decorativo 3"
+			class="slide absolute top-0 right-0 h-full w-[65%] object-cover object-right pointer-events-auto transition-opacity duration-1000 opacity-0 z-0"/>
+		<Image
+			src={fondopc4} 
+			alt="Fondo decorativo 4"
+			class="slide absolute top-0 right-0 h-full w-[65%] object-cover object-right pointer-events-auto transition-opacity duration-1000 opacity-0 z-0"/>
+		<Image
+			src={fondopc5} 
+			alt="Fondo decorativo 5"
+			class="slide absolute top-0 right-0 h-full w-[65%] object-cover object-right pointer-events-auto transition-opacity duration-1000 opacity-0 z-0"/>
+		<Image
+			src={fondopc6} 
+			alt="Fondo decorativo 6"
+			class="slide absolute top-0 right-0 h-full w-[65%] object-cover object-right pointer-events-auto transition-opacity duration-1000 opacity-0 z-0"/>
+	</div>
+	</div>
+	<section class="w-[30%] gap-4 flex flex-col justify-center">
+		<h1 class="text-7xl font-bold mb-4 leading-[1.1] text-main">Mantenerse en contacto nunca había sido tan fácil.</h1>
+		<p class="text-xl text-main/80 font-semibold">Para nuestros mayores, las tecnologías modernas pueden ser difíciles de usar. Nuestra solución está diseñada para facilitar la comunicación y el acceso a la información, asegurando que todos se sientan conectados y seguros.</p>
+		<button class="text-xl font-semibold mt-6 px-6 py-5 bg-botones text-fondos rounded-lg hover:brightness-110 cursor-pointer transition-all duration-200">Descubre más</button>
+	</section>
 </Layout>
+
+<script>
+	const slides = document.querySelectorAll('.slide');
+	let currentSlide = 0;
+	let timeout = 4000;
+	setInterval(() => {
+		slides[currentSlide].classList.remove('opacity-100', 'z-10');
+		slides[currentSlide].classList.add('opacity-0', 'z-0');
+		
+		currentSlide = (currentSlide + 1) % slides.length;
+		
+		slides[currentSlide].classList.remove('opacity-0', 'z-0');
+		slides[currentSlide].classList.add('opacity-100', 'z-10');
+	}, timeout); 
+</script>
