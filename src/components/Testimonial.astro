@@ -1,0 +1,142 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+const baseRow1 = [
+  { 
+    quote: "Es increíble ver a mi madre de 82 años enviando audios al grupo. La interfaz es tan intuitiva que aprendió en minutos.", 
+    name: "Elena García", 
+    title: "Hija y cuidadora principal", 
+    imageId: 45 
+  },
+  { 
+    quote: "Ya no recibo llamadas a medianoche porque 'se borró un icono'. Es la primera vez que mi abuelo domina una app por sí mismo.", 
+    name: "Ricardo Torres", 
+    title: "Nieto de usuario (85 años)", 
+    imageId: 12 
+  },
+  { 
+    quote: "La configuré en 5 minutos para mi tía. Me dijo: '¡Hijo, por fin puedo leer los mensajes sin gafas!' Eso lo dice todo.", 
+    name: "Javier López", 
+    title: "Sobrino y soporte tech familiar", 
+    imageId: 22 
+  },
+  { 
+    quote: "Buscaba algo que no agobiara a mi abuelo con opciones innecesarias. Esta app da en el clavo: es simple y humana.", 
+    name: "Juan Pérez", 
+    title: "Nieto y diseñador UX", 
+    imageId: 33 
+  },
+  { 
+    quote: "El modo de configuración remota es un salvavidas. Pude ajustar el tamaño del texto para mi padre desde mi propia casa.", 
+    name: "Carmen Ortiz", 
+    title: "Hija de usuario (78 años)", 
+    imageId: 36 
+  },
+];
+
+const baseRow2 = [
+  { 
+    quote: "Es el mejor regalo que le he hecho a mi padre. Ahora me envía fotos de su jardín sin frustraciones ni errores.", 
+    name: "Lucía Méndez", 
+    title: "Hija de usuario", 
+    imageId: 58
+  },
+  { 
+    quote: "Se acabó el miedo a que mi madre 'rompa' algo o borre contactos. La seguridad que ofrece para la familia es inigualable.", 
+    name: "Marcos Sanz", 
+    title: "Hijo de usuaria (80 años)", 
+    imageId: 65 
+  },
+  { 
+    quote: "Mi abuela se sentía aislada porque todos usábamos apps que no entendía. Gracias a esto, ha vuelto a ser el alma de la familia.", 
+    name: "Sofía Vargas", 
+    title: "Nieta y estudiante", 
+    imageId: 47 
+  },
+  { 
+    quote: "La sonrisa de mi padre cuando contestó su primer mensaje no tiene precio. Esta app ha cerrado una brecha generacional.", 
+    name: "Pedro Gómez", 
+    title: "Hijo de usuario", 
+    imageId: 51 
+  },
+  { 
+    quote: "Como profesional de la salud, la recomiendo. Reduce el aislamiento y la ansiedad tecnológica de los mayores drásticamente.", 
+    name: "Ana Morales", 
+    title: "Terapeuta Ocupacional", 
+    imageId: 29
+  },
+];
+// Intentamos crear un bloque de 12 cartas (6 por fila) para que el carrusel se vea lleno y fluido.
+const row1 = [...baseRow1, ...baseRow1, ...baseRow1, ...baseRow1];
+const row2 = [...baseRow2, ...baseRow2, ...baseRow2, ...baseRow2];
+---
+
+<section id="carousel-section" class="py-24 bg-white overflow-hidden select-none">
+  <div class="text-center max-w-3xl mx-auto px-4 mb-16">
+    <h2 class="text-[44px] leading-tight font-extrabold text-gray-900 tracking-tight">
+      Valoraciones de nuestros clientes.
+    </h2>
+  </div>
+
+  <div class="relative flex flex-col gap-6 cursor-pointer" id="carousel-track-container">
+    
+    <div class="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-white to-transparent z-10 pointer-events-none"></div>
+    <div class="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+    <div class="flex w-max animate-scroll-right">
+      <div class="flex gap-6 pr-6">
+        {row1.map(card => <TestimonialCard {...card} />)}
+      </div>
+      <div class="flex gap-6 pr-6" aria-hidden="true">
+        {row1.map(card => <TestimonialCard {...card} />)}
+      </div>
+    </div>
+
+    <div class="flex w-max animate-scroll-left">
+      <div class="flex gap-6 pr-6">
+        {row2.map(card => <TestimonialCard {...card} />)}
+      </div>
+      <div class="flex gap-6 pr-6" aria-hidden="true">
+        {row2.map(card => <TestimonialCard {...card} />)}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .animate-scroll-left {
+    animation: scroll-left 160s linear infinite;
+  }
+  .animate-scroll-right {
+    animation: scroll-right 160s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  :global(.is-paused) .animate-scroll-left,
+  :global(.is-paused) .animate-scroll-right {
+    animation-play-state: paused !important;
+  }
+</style>
+
+<script>
+  const initCarousel = () => {
+    const section = document.getElementById('carousel-section');
+    if (section) {
+      section.addEventListener('click', () => {
+        section.classList.toggle('is-paused');
+      });
+    }
+  };
+
+  initCarousel();
+  document.addEventListener('astro:page-load', initCarousel);
+</script>
