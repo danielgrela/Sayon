@@ -5,7 +5,7 @@ interface Props {
   title: string;
   imageId: number;
 }
-
+import { Image } from 'astro:assets';
 const { quote, name, title, imageId } = Astro.props;
 ---
 
@@ -17,10 +17,12 @@ const { quote, name, title, imageId } = Astro.props;
   </p>
   
   <div class="flex items-center gap-4 mt-6">
-    <img 
+    <Image 
       src={`https://i.pravatar.cc/150?img=${imageId}`} 
       alt={`Avatar de ${name}`} 
       class="w-12 h-12 rounded-full object-cover shadow-sm"
+      width={48}
+      height={48}
       loading="lazy"
     />
     <div class="flex flex-col">
