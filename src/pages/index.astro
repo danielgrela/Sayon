@@ -6,7 +6,13 @@ import Pricing from '../components/Pricing.astro';
 ---
 
 <Layout>
-	<Hero />
-	<Testimonial />
-	<Pricing />
+	<section class="h-screen">
+		<Hero />
+	</section>
+	<section class="2xl:h-screen">
+		<Testimonial />
+	</section>
+	<section class="md:h-screen">
+		<Pricing />
+	</section>
 </Layout>

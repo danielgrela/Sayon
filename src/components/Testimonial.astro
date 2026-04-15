@@ -70,17 +70,14 @@ const row1 = [...baseRow1, ...baseRow1, ...baseRow1, ...baseRow1];
 const row2 = [...baseRow2, ...baseRow2, ...baseRow2, ...baseRow2];
 ---
 
-<section id="carousel-section" class="mt-24 overflow-hidden select-none">
-  <div class="text-center max-w-3xl mx-auto px-4 mb-16">
-    <h2 class="text-5xl leading-tight font-extrabold text-main tracking-tight">
+<section id="carousel-section" class="md:pt-24 overflow-hidden select-none">
+  <div class="text-center max-w-3xl mx-auto px-4 mb-8 2xl:mb-16">
+    <h2 class="text-3xl 2xl:text-5xl leading-tight font-extrabold text-main tracking-tight">
       Valoraciones de nuestros clientes.
     </h2>
   </div>
 
-  <div class="relative flex flex-col gap-6 cursor-pointer" id="carousel-track-container">
-    
-    <div class="absolute inset-y-0 left-0 w-32 bg-linear-to-r from-white to-transparent z-10 pointer-events-none"></div>
-    <div class="absolute inset-y-0 right-0 w-32 bg-linear-to-l from-white to-transparent z-10 pointer-events-none"></div>
+  <div class="relative flex flex-col gap-6 cursor-pointer pb-8" id="carousel-track-container">
 
     <div class="flex w-max animate-scroll-right">
       <div class="flex gap-6 pr-6">
@@ -105,10 +102,10 @@ const row2 = [...baseRow2, ...baseRow2, ...baseRow2, ...baseRow2];
 
 <style>
   .animate-scroll-left {
-    animation: scroll-left 160s linear infinite;
+    animation: scroll-left 180s linear infinite;
   }
   .animate-scroll-right {
-    animation: scroll-right 160s linear infinite;
+    animation: scroll-right 180s linear infinite;
   }
 
   @keyframes scroll-left {

@@ -9,25 +9,24 @@ import { Image } from 'astro:assets';
 const { quote, name, title, imageId } = Astro.props;
 ---
 
-<div class="w-95 shrink-0 bg-white rounded-3xl p-8 border border-gray-100 flex flex-col gap-4 shadow-sm hover:shadow-xl transition-shadow duration-300">
-  <div class="text-botones text-6xl font-serif leading-none h-8 mt-2">“</div>
-  
-  <p class="text-main text-[15px] font-medium leading-relaxed flex-1">
+<div class="w-80 lg:w-95 shrink-0 bg-white rounded-3xl p-6 lg:p-8 border border-gray-100 flex flex-col gap-2 lg:gap-4 shadow-sm hover:shadow-xl transition-shadow duration-300">
+  <div class="text-botones text-5xl lg:text-6xl font-serif leading-none h-8 mt-2">“</div>
+  <p class="text-main text-sm lg:text-sm font-medium leading-relaxed flex-1">
     {quote}
   </p>
   
-  <div class="flex items-center gap-4 mt-6">
+  <div class="flex items-center gap-4 mt-3 lg:mt-6">
     <Image 
       src={`https://i.pravatar.cc/150?img=${imageId}`} 
       alt={`Avatar de ${name}`} 
-      class="w-12 h-12 rounded-full object-cover shadow-sm"
+      class="size-8 lg:size-12 rounded-full object-cover shadow-sm"
       width={48}
       height={48}
       loading="lazy"
     />
     <div class="flex flex-col">
-      <h4 class="font-bold text-main text-sm">{name}</h4>
-      <p class="text-xs text-main font-medium">{title}</p>
+      <h4 class="font-bold text-main text-xs lg:text-sm">{name}</h4>
+      <p class="text-xs lg:text-xs text-main font-medium">{title}</p>
     </div>
   </div>
 </div>

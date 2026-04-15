@@ -12,10 +12,10 @@ import Header from "../components/Header.astro";
         <meta name="generator" content={Astro.generator} />
         <title>Sayon</title>
     </head>
-    <body class="relative bg-fondos flex flex-col min-h-screen text-main">
+    <body class="relative bg-fondos flex flex-col min-h-screen text-main ">
     <Header />
 
-    <section class="relative z-10 w-full h-full">
+    <section class="relative z-10 w-full h-screen md:overflow-y-scroll">
         <slot />
     </section>
 </body>
