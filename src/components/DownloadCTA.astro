@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import appStoreBadge from "../assets/applestore.svg";
+import googlePlayBadge from "../assets/googleplaystore.svg";
+import mockupphone1 from "../assets/mockupphone1.png";
+import mockupphone2 from "../assets/mockupphone2.png";
+---
+<div class="flex flex-col lg:flex-row w-full h-full relative justify-between px-16 gap-16 items-center">
+    <div 
+        class="hidden lg:flex flex-row w-auto h-full pointer-events-none items-center justify-center gap-4 shrink-0">
+        <Image 
+            src={mockupphone1}
+            width={320}
+            height={640}
+            alt="Mockup de la aplicación Sayon en un teléfono móvil"
+            class="h-80 xl:h-128 w-auto 2xl:h-160"
+            />
+            <Image 
+            src={mockupphone2}
+            width={340}
+            height={640}
+            alt="Mockup de la aplicación Sayon en un teléfono móvil"
+            class="h-80 xl:h-128 w-auto 2xl:h-160"
+            />
+            <Image
+                src={mockupphone1}
+                width={320}
+                height={640}
+                alt="Mockup de la aplicación Sayon en un teléfono móvil"
+                class="h-80 xl:h-128 w-auto 2xl:h-160"
+                />
+    </div>
+    <section class="flex-1 w-full h-full overflow-y-auto flex items-center justify-center">
+        <div class="gap-4 flex flex-col w-full">
+            <h1 class="text-5xl 2xl:text-6xl font-bold mb-4 leading-[1.1] text-main">Miles de personas ya confian en nosotros.</h1>
+            <p class="text-xl text-main/80 font-semibold">Da el último paso. Descarga la app ahora y únete a todas las familias que ya han recuperado la tranquilidad de estar siempre conectadas.</p>
+            <div class="flex flex-row justify-center lg:justify-start items-center gap-4 mt-4 w-full">
+                <a href="https://apps.apple.com/app/id1551353775" class="flex">
+                    <Image 
+                    class="h-16 w-auto object-contain"
+                    src={appStoreBadge}
+                    width={250}
+                    height={83}
+                    alt="Download on the App Store">
+                </a>
+                <a href='https://play.google.com/store/apps/details?id=com.stagescycling.stages' class="flex">
+                    <Image 
+                    src={googlePlayBadge}
+                    width={250}
+                    height={83}
+                    class="h-16 w-auto object-contain"
+                    alt='Get it on Google Play' />
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+	const slides = document.querySelectorAll('.slide');
+	let currentSlide = 0;
+	let timeout = 4000;
+	setInterval(() => {
+		slides[currentSlide].classList.remove('opacity-100', 'z-10');
+		slides[currentSlide].classList.add('opacity-0', 'z-0');
+		
+		currentSlide = (currentSlide + 1) % slides.length;
+		
+		slides[currentSlide].classList.remove('opacity-0', 'z-0');
+		slides[currentSlide].classList.add('opacity-100', 'z-10');
+	}, timeout); 
+</script>

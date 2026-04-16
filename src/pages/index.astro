@@ -3,16 +3,20 @@ import Hero from '../components/Hero.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Layout from '../layouts/Layout.astro';
 import Pricing from '../components/Pricing.astro';
+import DownloadCTA from '../components/DownloadCTA.astro';
 ---
 
 <Layout>
-	<section class="h-screen">
+	<section class="lg:h-screen mt-8 mb-12 lg:mt-0 lg:mb-0">
 		<Hero />
 	</section>
 	<section class="2xl:h-screen">
 		<Testimonial />
 	</section>
-	<section class="md:h-screen">
+	<section class="md:min-h-screen">
 		<Pricing />
+	</section>
+	<section class="xl:h-screen">
+		<DownloadCTA />
 	</section>
 </Layout>

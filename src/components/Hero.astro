@@ -6,8 +6,10 @@ import fondopc3 from "../assets/fondopc3.jpg";
 import fondopc4 from "../assets/fondopc4.jpg";
 import fondopc5 from "../assets/fondopc5.jpg";
 import fondopc6 from "../assets/fondopc6.jpg";
+import mockupphone1 from "../assets/mockupphone1.png";
+import mockupphone2 from "../assets/mockupphone2.png";
 ---
-<div class="flex flex-row w-full h-full relative">
+<div class="flex flex-row w-full lg:h-full relative ">
     <div 
         class="hidden lg:block absolute inset-0 w-full h-full pointer-events-none"
         style="clip-path: polygon(40% 0, 100% 0, 100% 100%, 35% 100%);">
@@ -45,11 +47,35 @@ import fondopc6 from "../assets/fondopc6.jpg";
                 class="slide absolute top-20 right-0 h-full w-[65%] object-cover object-right pointer-events-auto transition-opacity duration-1000 opacity-0 z-0"/>
         </div>
     </div>
-    <section class="w-full lg:w-1/3 pl-0 lg:pl-8 2xl:pl-16 h-full overflow-y-auto flex justify-center">
-        <div class="gap-4 flex flex-col my-auto py-8 w-2/3 lg:w-full">
+    <section class="w-full lg:w-1/3 pl-0 lg:pl-8 2xl:pl-16 lg:h-full overflow-y-auto flex flex-col justify-center items-center">
+        <div class="gap-4 flex flex-col my-auto py-8 px-10 w-full">
             <h1 class="text-5xl 2xl:text-7xl font-bold mb-4 leading-[1.1] text-main">Mantenerse en contacto nunca fue tan fácil.</h1>
             <p class="text-xl text-main/80 font-semibold">Para nuestros mayores, las tecnologías modernas pueden ser difíciles de usar. Nuestra solución está diseñada para facilitar la comunicación y el acceso a la información, asegurando que todos se sientan conectados y seguros.</p>
             <button class="text-xl font-semibold mt-6 px-6 py-5 bg-botones text-fondos rounded-lg hover:brightness-80 cursor-pointer transition-all duration-200">Descubre más</button>
+        </div>
+        <div id="mockup-scroll-container" class="gap-4 flex lg:hidden flex-row my-auto w-full overflow-x-scroll no-scrollbar snap-x snap-mandatory px-8">
+            <Image 
+            src={mockupphone1}
+            width={320}
+            height={640}
+            alt="Mockup de la aplicación Sayon en un teléfono móvil"
+            class="h-140 w-auto shrink-0 snap-center"
+            />
+            <Image 
+            id="center-mockup"
+            src={mockupphone2}
+            width={340}
+            height={640}
+            alt="Mockup de la aplicación Sayon en un teléfono móvil"
+            class="h-140 w-auto shrink-0 snap-center"
+            />
+            <Image
+                src={mockupphone1}
+                width={320}
+                height={640}
+                alt="Mockup de la aplicación Sayon en un teléfono móvil"
+                class="h-140 w-auto shrink-0 snap-center"
+                />
         </div>
     </section>
 </div>
@@ -67,4 +93,14 @@ import fondopc6 from "../assets/fondopc6.jpg";
 		slides[currentSlide].classList.remove('opacity-0', 'z-0');
 		slides[currentSlide].classList.add('opacity-100', 'z-10');
 	}, timeout); 
+
+	// Centrar el carrusel de móviles al cargar
+	const scrollContainer = document.getElementById('mockup-scroll-container');
+	const centerMockup = document.getElementById('center-mockup');
+	
+	if (scrollContainer && centerMockup) {
+		// Posicionar el scroll inicial en la imagen del medio
+		const scrollTo = centerMockup.offsetLeft - (scrollContainer.clientWidth / 2) + (centerMockup.clientWidth / 2);
+		scrollContainer.scrollLeft = scrollTo;
+	}
 </script>

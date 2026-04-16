@@ -6,3 +6,15 @@
   --color-botones: #E67E22;
   --color-secundario: #85C1E9;
 }
+
+@layer utilities {
+/* Chrome, Safari, Opera */
+.no-scrollbar::-webkit-scrollbar {
+display: none;
+}
+/* IE, Edge, Firefox */
+.no-scrollbar {
+-ms-overflow-style: none; /* IE and Edge */
+scrollbar-width: none; /* Firefox */
+}
+}
