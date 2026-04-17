@@ -54,14 +54,16 @@ import mockupphone2 from "../assets/mockupphone2.png";
             <button class="hidden lg:block text-xl font-semibold mt-6 px-6 py-5 bg-botones text-fondos rounded-lg hover:brightness-80 cursor-pointer transition-all duration-200">Descubre más</button>
         </div>
         <div id="mockup-scroll-container" class="gap-4 flex lg:hidden flex-row my-auto w-full overflow-x-scroll no-scrollbar snap-x snap-mandatory px-8">
-            <Image 
+            <Image
+            priority
             src={mockupphone1}
             width={320}
             height={640}
             alt="Mockup de la aplicación Sayon en un teléfono móvil"
             class="h-140 w-auto shrink-0 snap-center"
             />
-            <Image 
+            <Image
+            priority
             id="center-mockup"
             src={mockupphone2}
             width={340}
@@ -70,6 +72,7 @@ import mockupphone2 from "../assets/mockupphone2.png";
             class="h-140 w-auto shrink-0 snap-center"
             />
             <Image
+                priority
                 src={mockupphone1}
                 width={320}
                 height={640}
