@@ -6,6 +6,9 @@
   --color-botones: #E67E22;
   --color-secundario: #85C1E9;
 }
+@import "flowbite/src/themes/default";
+@plugin "flowbite/plugin";
+@source "../../node_modules/flowbite";
 
 @layer utilities {
 /* Chrome, Safari, Opera */
