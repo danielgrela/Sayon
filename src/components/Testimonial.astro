@@ -70,7 +70,7 @@ const row1 = [...baseRow1, ...baseRow1, ...baseRow1, ...baseRow1];
 const row2 = [...baseRow2, ...baseRow2, ...baseRow2, ...baseRow2];
 ---
 
-<section id="carousel-section" class="md:pt-24 overflow-hidden select-none">
+<section id="testimonials" class="md:pt-24 overflow-hidden select-none">
   <div class="text-center max-w-3xl mx-auto px-4 mb-8 2xl:mb-16">
     <h2 class="text-3xl 2xl:text-5xl leading-tight font-extrabold text-main tracking-tight">
       Valoraciones de nuestros clientes.
@@ -126,7 +126,7 @@ const row2 = [...baseRow2, ...baseRow2, ...baseRow2, ...baseRow2];
 
 <script>
   const initCarousel = () => {
-    const section = document.getElementById('carousel-section');
+    const section = document.getElementById('testimonials');
     if (section) {
       section.addEventListener('click', () => {
         section.classList.toggle('is-paused');
