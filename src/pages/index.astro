@@ -1,5 +1,6 @@
 ---
 import Hero from '../components/Hero.astro';
+import DescubreMas from '../components/DescubreMas.astro';
 import Testimonial from '../components/Testimonial.astro';
 import Layout from '../layouts/Layout.astro';
 import Pricing from '../components/Pricing.astro';
@@ -7,16 +8,69 @@ import DownloadCTA from '../components/DownloadCTA.astro';
 ---
 
 <Layout>
-	<section class="lg:h-screen my-8 lg:my-0">
-		<Hero />
-	</section>
-	<section class="2xl:h-screen">
-		<Testimonial />
-	</section>
-	<section class="md:min-h-screen">
-		<Pricing />
-	</section>
-	<section class="xl:h-screen pb-24 xl:pb-0">
-		<DownloadCTA />
+	<div id="index-content">
+		<section class="lg:h-screen my-8 lg:my-0">
+			<Hero />
+		</section>
+		<section id="testimonials" class="2xl:h-screen">
+			<Testimonial />
+		</section>
+		<section id="pricing" class="md:min-h-screen">
+			<Pricing />
+		</section>
+		<section class="xl:h-screen pb-24 xl:pb-0">
+			<DownloadCTA />
+		</section>
+	</div>
+	<section id="descubre-section" class="hidden">
+		<DescubreMas />
 	</section>
 </Layout>
+
+<script>
+	const descubreButtons = document.querySelectorAll('.descubre-btn');
+	const indexContent = document.getElementById('index-content');
+	const descubreSection = document.getElementById('descubre-section');
+
+	descubreButtons.forEach((button) => {
+		button.addEventListener('click', (event) => {
+			event.preventDefault();
+			if (!indexContent || !descubreSection) {
+				return;
+			}
+			indexContent.classList.add('hidden');
+			descubreSection.classList.remove('hidden');
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	});
+
+	const headerLinks = document.querySelectorAll('a[href="#testimonials"], a[href="#pricing"]');
+	headerLinks.forEach((link) => {
+		link.addEventListener('click', (event) => {
+			if (!indexContent || !descubreSection) {
+				return;
+			}
+			event.preventDefault();
+			indexContent.classList.remove('hidden');
+			descubreSection.classList.add('hidden');
+			const targetId = (link as HTMLAnchorElement).getAttribute('href')?.slice(1);
+			const target = targetId ? document.getElementById(targetId) : null;
+			if (target) {
+				target.scrollIntoView({ behavior: 'smooth' });
+			}
+		});
+	});
+
+	const backButtons = document.querySelectorAll('.volver-btn');
+	backButtons.forEach((button) => {
+		button.addEventListener('click', (event) => {
+			event.preventDefault();
+			if (!indexContent || !descubreSection) {
+				return;
+			}
+			indexContent.classList.remove('hidden');
+			descubreSection.classList.add('hidden');
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	});
+</script>
